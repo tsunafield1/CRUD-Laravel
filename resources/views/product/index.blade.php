@@ -81,7 +81,7 @@
                                     <br>
                                 @enderror
                                 <br>
-                                <input type="submit" value="Add" class="btn btn-primary">
+                                <input type="submit" value="เพิ่ม" class="btn btn-primary">
                             </form>
                         </div>
                     </div>

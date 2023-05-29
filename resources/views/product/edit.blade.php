@@ -38,7 +38,7 @@
                                 <br>
                                 <img src="{{asset($product->image)}}" alt="" width="300" height="300">
                                 <br>
-                                <input type="submit" value="แก้ไข" class="btn btn-primary">
+                                <input type="submit" value="Update" class="btn btn-primary">
                             </form>
                         </div>
                     </div>
