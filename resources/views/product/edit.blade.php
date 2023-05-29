@@ -23,6 +23,10 @@
                                     <b class="text-danger">{{$message}}</b>
                                     <br>
                                 @enderror
+                                @if(session('error'))
+                                    <b class="text-danger">{{session('error')}}</b>
+                                    <br>
+                                @endif
                                 <label for="image">รูปสินค้า</label>
                                 <input type="file" name="image" id="" class="form-control">
                                 @error('image')

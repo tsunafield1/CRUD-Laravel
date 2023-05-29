@@ -71,12 +71,33 @@ class ProductController extends Controller
         $product = Product::find($request->id);
 
         if(empty($request->image)){
-            $product->update([
-                'name' => $request->name,
-                'price' => $request->price
-            ]);
+            if($product->name == $request->name){
+                $product->update([
+                    'name' => $request->name,
+                    'price' => $request->price
+                ]);
+            }
+            else{
+                $temp = Product::where('name', $request->name)->get();
+                if(count($temp) == 0){
+                    $product->update([
+                        'name' => $request->name,
+                        'price' => $request->price
+                    ]);
+                }
+                else{
+                    return redirect()->back()->with('error', 'ชื่อสินค้าซ้ำ');
+                }
+            }
+            
         }
         else{
+            if($product->name != $request->name){
+                $temp = Product::where('name', $request->name)->get();
+                if(count($temp) > 0){
+                    return redirect()->back()->with('error', 'ชื่อสินค้าซ้ำ');
+                }
+            }
             $image = $request->file('image');
             $gen_name = hexdec(uniqid());
             $ext = strtolower($image->getClientOriginalExtension());
